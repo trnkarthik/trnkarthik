@@ -53,6 +53,27 @@
 			    padding: 14px 15px 13px;	    
 			    -webkit-box-shadow: 3px 3px 3px #8C8D8D;
 			}
+		    #header_blog_name{
+			position: relative;
+			left: 5%;
+			font-size: 21px;
+		    }
+		    #left_nav_bar{
+			position: fixed;
+			left: 1%;
+			right: 96%;
+			top: 100px;
+			min-height: 150px;
+			min-width: 40px;
+			background: #F5F5F5;
+			background: -moz-linear-gradient(top,#FAFAFA,#F5F5F5);
+			background: -webkit-linear-gradient(top,#FAFAFA,#F5F5F5);
+			background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#FAFAFA),color-stop(1,#F5F5F5));
+			background: linear-gradient(top,#FAFAFA,#F5F5F5);
+			border: 1px solid #CCC;
+			border-radius: 3px;
+			-webkit-box-shadow: 3px 3px 3px #8C8D8D;
+		    }
 		</style>
 		
 		
@@ -61,11 +82,16 @@
         <div class="container">
             <div class="header">
                 <a href="">
-                    <strong>Raja Narasimha Karthik Tangirala (trnkarthik) </strong>
+                    <strong id="header_blog_name">Raja Narasimha Karthik Tangirala (trnkarthik) </strong>
                 </a>
                 
             </div>
-			
+		
+	    <div id="left_nav_bar">
+		hi <br/>
+	      left
+		
+	    </div>	
 			<section id="jms-slideshow" class="jms-slideshow">
 				<div class="step" data-color="color-1" data-x="2000" data-y="1000" data-z="3000" data-rotate="-20">
 					<div class="jms-content">
