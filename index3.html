@@ -63,7 +63,7 @@
 			left: 1%;
 			right: 94.5%;
 			top: 100px;
-			min-height: 355px;
+			min-height: 365px;
 			min-width: 65px;
 			background: #F5F5F5;
 			background: -moz-linear-gradient(top,#FAFAFA,#F5F5F5);
@@ -90,28 +90,150 @@
 			-o-transition: all 0.3s ease-out;
 			transition: all 0.3s ease-out;
 		    }
-		    .something{
-			border: 1px solid #D8D1D1;
-			background: #FFF;
-			-webkit-box-shadow: 1px 1px 1px #CCC;
-			border-radius: 2px;
-			padding: 2px;
-		    }
 		    
 		    #my_work{
 			background: #FFF;
-position: relative;
-top: -170px;
-left: 6.5%;
-width: 100%;
-height: 500px;
-z-index: -1;
-width: 90%;
+			position: relative;
+			top: -140px;
+			left: 6.5%;
+			height: 500px;
+			z-index: -1;
+			width: 90%;
 		    }
+		    
+		    #what_i_love{
+			background: red;
+			position: relative;
+			top: -140px;
+			left: 6.5%;
+			height: 500px;
+			z-index: -1;
+			width: 90%;
+		    }
+		    #what_i_know{
+			background: green;
+			position: relative;
+			top: -140px;
+			left: 6.5%;
+			height: 500px;
+			z-index: -1;
+			width: 90%;
+		    }
+		    #awards{
+			background: blue;
+			position: relative;
+			top: -140px;
+			left: 6.5%;
+			height: 500px;
+			z-index: -1;
+			width: 90%;
+		    }
+		    #resume{
+			background: green;
+			position: relative;
+			top: -140px;
+			left: 6.5%;
+			height: 500px;
+			z-index: -1;
+			width: 90%;
+		    }
+		    #contact{
+    			background: black;
+			position: relative;
+			top: -140px;
+			left: 6.5%;
+			height: 500px;
+			z-index: -1;
+			width: 90%;
+		    }
+		    
+		    ul{
+			list-style-type: none;
+			padding: 0px;
+		    }
+		    #left_nav_bar li a i.selected {
+			border: 1px solid #52CFEB;
+			background: #07D4DD;
+			-webkit-box-shadow: 1px 1px 1px #CCC;
+			border-radius: 2px;
+			padding: 6px;
+			color: #FFF;
+			}
 		</style>
 		
 		
 		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+		
+		<script>!window.jQuery && document.write(unescape('%3Cscript src="../lib/jquery/jquery.js"%3E%3C/script%3E'));</script>
+                   
+		<script src="js/jquery.smooth-scroll.js"></script>
+		
+		<script>
+		    $(document).ready(function() {
+		    $('#left_nav_bar a').smoothScroll();
+	        });
+
+  </script>
+		
+		<script>
+		    
+		    
+		    
+		    
+		    var topRange      = 250,  // measure from the top of the viewport to X pixels down
+     edgeMargin    = 20,   // margin above the top or margin from the end of the page
+     animationTime = 1200, // time in milliseconds
+     contentTop = [];
+
+$(document).ready(function(){ 
+
+ // Stop animated scroll if the user does something
+ $('html,body').bind('scroll mousedown DOMMouseScroll mousewheel keyup', function(e){
+ if ( e.which > 0 || e.type == 'mousedown' || e.type == 'mousewheel' ){
+  $('html,body').stop();
+ }
+})
+
+ // Set up content an array of locations
+ $('#left_nav_bar').find('a').each(function(){
+  contentTop.push( $( $(this).attr('href') ).offset().top );
+ })
+
+ // Animate menu scroll to content
+  $('#left_nav_bar').find('a').click(function(){
+   var sel = this,
+       newTop = Math.min( contentTop[ $('#left_nav_bar a').index( $(this) ) ], $(document).height() - $(window).height() ); // get content top or top position if at the document bottom
+   $('html,body').stop().animate({ 'scrollTop' : newTop }, animationTime, function(){
+    window.location.hash = $(sel).attr('href');
+   });
+   return false;
+ })
+ 
+ // adjust side menu
+ $(window).scroll(function(){
+  var winTop = $(window).scrollTop(),
+      bodyHt = $(document).height(),
+      vpHt = $(window).height() + edgeMargin;  // viewport height + margin
+  $.each( contentTop, function(i,loc){
+   if ( ( loc > winTop - edgeMargin && ( loc < winTop + topRange || ( winTop + vpHt ) >= bodyHt ) ) ){
+    $('#left_nav_bar li a i')
+     .removeClass('selected')
+     .eq(i).addClass('selected');
+   }
+  })
+ })
+  
+})
+		</script>
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
     </head>
     <body>
@@ -123,16 +245,16 @@ width: 90%;
                 
             </div>
 		
-	    <div id="left_nav_bar">
-		
-		<center><i title="Home" class="icon-home nav_icons" style="position: relative;top: 15px;"></i></center>
-		<center><i title="My Work" class="icon-beaker nav_icons" style="font-size: 34px;position: relative;top: 30px;"></i></center>
-		<center><i title="What I love" class="icon-heart nav_icons" style="font-size: 32px;position: relative;top: 45px;"></i></center>
-		<center><i title="What I Know" class="icon-code nav_icons" style="font-size: 32px;position: relative;top: 60px;"></i></center>
-		<center><i title="Awards and Certifications" class="icon-trophy nav_icons" style="position: relative;top: 75px;"></i></center>
-		<center><i title="My Resume" class="icon-file-alt nav_icons" style="font-size: 34px;position: relative;top: 90px;"></i></center>
-		<center><i title="Contact Me" class="icon-envelope-alt nav_icons" style="font-size: 30px;position: relative;top: 105px;"></i></center>
-		
+	    <div id="left_nav_bar" class="main_nav">
+		<ul>
+		<li><center><a href="#jms-slideshow"><i title="Home" class="icon-home nav_icons" style="position: relative;top: 5px;"></i></a></center></li>
+		<li><center><a href="#my_work"><i title="My Work" class="icon-beaker nav_icons" style="font-size: 34px;position: relative;top: 20px;"></i></a></center></li>
+		<li><center><a href="#what_i_love"><i title="What I love" class="icon-heart nav_icons" style="font-size: 32px;position: relative;top: 35px;"></i></a></center></li>
+		<li><center><a href="#what_i_know"><i title="What I Know" class="icon-code nav_icons" style="font-size: 32px;position: relative;top: 50px;"></i></a></center></li>
+		<li><center><a href="#awards"><i title="Awards and Certifications" class="icon-trophy nav_icons" style="position: relative;top: 65px;"></i></a></center></li>
+		<li><center><a href="#resume"><i title="My Resume" class="icon-file-alt nav_icons" style="font-size: 37px;position: relative;top: 80px;"></i></a></center></li>
+		<li><center><a href="#contact"><i title="Contact Me" class="icon-envelope-alt nav_icons" style="font-size: 30px;position: relative;top: 95px;"></i></a></center></li>
+		</ul>
 	    </div>	
 			<section id="jms-slideshow" class="jms-slideshow">
 				<div class="step" data-color="color-1" data-x="2000" data-y="1000" data-z="3000" data-rotate="-20">
@@ -199,6 +321,32 @@ width: 90%;
 		 <div id="my_work">
 		    
 		 </div>
+		 
+		 <!--What I Love section -->
+		 <div id="what_i_love">
+		    
+		 </div>
+		 
+		 <!--What I Know section -->
+		 <div id="what_i_know">
+		    
+		 </div>
+		 
+		 <!--Awards and Certifications section -->
+		 <div id="awards">
+		    
+		 </div>
+		 
+		 <!--My Resume section -->
+		 <div id="resume">
+		    
+		 </div>
+		 
+		 <!--Contact Me section -->
+		 <div id="contact">
+		    
+		 </div>
+		
 		
 		
     </body>

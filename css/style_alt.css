@@ -3,13 +3,13 @@
 	left: 6.5%;
 	width: 90%;
 	min-width: 640px;
-	height: 530px;
+	height: 560px;
 	border-top: 1px solid rgba(165, 163, 163, 0.12);
 }
 .jms-wrapper {
 	width: auto;
 	min-width: 600px;
-	height: 520px;
+	height: 550px;
 	background-color: #fff;
 	box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
 	-webkit-background-clip: padding;
