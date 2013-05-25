@@ -39,130 +39,10 @@
 			}
 			</style>
 		</noscript>
-		
-		<style>
-		    .header{
-			    background: #F5F5F5;
-			    background: -moz-linear-gradient(top,#FAFAFA,#F5F5F5);
-			    background: -webkit-linear-gradient(top,#FAFAFA,#F5F5F5);
-			    background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#FAFAFA),color-stop(1,#F5F5F5));
-			    background: linear-gradient(top,#FAFAFA,#F5F5F5);
-			    border-bottom: 1px solid #EEE;
-			    color: #444;
-			    min-height: 30px;
-			    padding: 14px 15px 13px;	    
-			    -webkit-box-shadow: 3px 3px 3px #8C8D8D;
-			}
-		    #header_blog_name{
-			position: relative;
-			left: 5%;
-			font-size: 21px;
-		    }
-		    #left_nav_bar{
-			position: fixed;
-			left: 1%;
-			right: 94.5%;
-			top: 100px;
-			min-height: 365px;
-			min-width: 65px;
-			background: #F5F5F5;
-			background: -moz-linear-gradient(top,#FAFAFA,#F5F5F5);
-			background: -webkit-linear-gradient(top,#FAFAFA,#F5F5F5);
-			background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#FAFAFA),color-stop(1,#F5F5F5));
-			background: linear-gradient(top,#FAFAFA,#F5F5F5);
-			border: 1px solid #CCC;
-			border-radius: 3px;
-			-webkit-box-shadow: 3px 3px 3px #8C8D8D;
-		    }
-		    
-		    .nav_icons{
-			font-size: 35px;
-			color: rgb(145, 145, 145);
-			padding-top: 10px;
-			position: relative;
-			top: 10px;
-		    }
-		    .nav_icons:hover{
-			color: #52CFEB;
-			-webkit-transition: all 0.3s ease-out;
-			-moz-transition: all 0.3s ease-out;
-			-ms-transition: all 0.3s ease-out;
-			-o-transition: all 0.3s ease-out;
-			transition: all 0.3s ease-out;
-		    }
-		    
-		    #my_work{
-			background: #FFF;
-			position: relative;
-			top: -140px;
-			left: 6.5%;
-			height: 500px;
-			z-index: -1;
-			width: 90%;
-		    }
-		    
-		    #what_i_love{
-			background: red;
-			position: relative;
-			top: -140px;
-			left: 6.5%;
-			height: 500px;
-			z-index: -1;
-			width: 90%;
-		    }
-		    #what_i_know{
-			background: green;
-			position: relative;
-			top: -140px;
-			left: 6.5%;
-			height: 500px;
-			z-index: -1;
-			width: 90%;
-		    }
-		    #awards{
-			background: blue;
-			position: relative;
-			top: -140px;
-			left: 6.5%;
-			height: 500px;
-			z-index: -1;
-			width: 90%;
-		    }
-		    #resume{
-			background: green;
-			position: relative;
-			top: -140px;
-			left: 6.5%;
-			height: 500px;
-			z-index: -1;
-			width: 90%;
-		    }
-		    #contact{
-    			background: black;
-			position: relative;
-			top: -140px;
-			left: 6.5%;
-			height: 500px;
-			z-index: -1;
-			width: 90%;
-		    }
-		    
-		    ul{
-			list-style-type: none;
-			padding: 0px;
-		    }
-		    #left_nav_bar li a i.selected {
-			border: 1px solid #52CFEB;
-			background: #07D4DD;
-			-webkit-box-shadow: 1px 1px 1px #CCC;
-			border-radius: 2px;
-			padding: 6px;
-			color: #FFF;
-			}
-		</style>
-		
-		
+	         
+		 
 		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/my_main_style.css">
 		
 		<script>!window.jQuery && document.write(unescape('%3Cscript src="../lib/jquery/jquery.js"%3E%3C/script%3E'));</script>
                    
@@ -171,69 +51,40 @@
 		<script>
 		    $(document).ready(function() {
 		    $('#left_nav_bar a').smoothScroll();
+		    $('.header a').smoothScroll();
 	        });
-
-  </script>
+	      </script>
 		
-		<script>
+		<script src="js/highlight_selected_nav_item.js"></script>
+		
 		    
-		    
-		    
-		    
-		    var topRange      = 250,  // measure from the top of the viewport to X pixels down
-     edgeMargin    = 20,   // margin above the top or margin from the end of the page
-     animationTime = 1200, // time in milliseconds
-     contentTop = [];
+		    <script type="text/javascript">
 
-$(document).ready(function(){ 
+$(document).ready(function() {
+    var s = $(".header");
+    var pos = s.position();                    
+    $(window).scroll(function() {
+        var windowpos = $(window).scrollTop();
+        if (windowpos >= 550) {
+            s.removeClass("header"); 
+            s.addClass("stick");
+        } else {
+            s.removeClass("stick"); 
+            s.addClass("header");
+        }
+	
+	if(s.attr('class')=="header"){
+	    $("#totop").hide();
+	}
+	else{
+	    $("#totop").show();
+	}
+	
+    });
+});
 
- // Stop animated scroll if the user does something
- $('html,body').bind('scroll mousedown DOMMouseScroll mousewheel keyup', function(e){
- if ( e.which > 0 || e.type == 'mousedown' || e.type == 'mousewheel' ){
-  $('html,body').stop();
- }
-})
-
- // Set up content an array of locations
- $('#left_nav_bar').find('a').each(function(){
-  contentTop.push( $( $(this).attr('href') ).offset().top );
- })
-
- // Animate menu scroll to content
-  $('#left_nav_bar').find('a').click(function(){
-   var sel = this,
-       newTop = Math.min( contentTop[ $('#left_nav_bar a').index( $(this) ) ], $(document).height() - $(window).height() ); // get content top or top position if at the document bottom
-   $('html,body').stop().animate({ 'scrollTop' : newTop }, animationTime, function(){
-    window.location.hash = $(sel).attr('href');
-   });
-   return false;
- })
- 
- // adjust side menu
- $(window).scroll(function(){
-  var winTop = $(window).scrollTop(),
-      bodyHt = $(document).height(),
-      vpHt = $(window).height() + edgeMargin;  // viewport height + margin
-  $.each( contentTop, function(i,loc){
-   if ( ( loc > winTop - edgeMargin && ( loc < winTop + topRange || ( winTop + vpHt ) >= bodyHt ) ) ){
-    $('#left_nav_bar li a i')
-     .removeClass('selected')
-     .eq(i).addClass('selected');
-   }
-  })
- })
-  
-})
+</script>
 		</script>
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
     </head>
     <body>
@@ -243,11 +94,15 @@ $(document).ready(function(){
                     <strong id="header_blog_name">Raja Narasimha Karthik Tangirala (trnkarthik) </strong>
                 </a>
                 
+		<a href="#home">
+		    <i id="totop" title="My Resume" class="icon-angle-up top_nav_icons" style="font-size: 37px;position: absolute;right: 6.5%;top: 0px;"></i>
+		</a>
+		
             </div>
 		
 	    <div id="left_nav_bar" class="main_nav">
 		<ul>
-		<li><center><a href="#jms-slideshow"><i title="Home" class="icon-home nav_icons" style="position: relative;top: 5px;"></i></a></center></li>
+		<li><center><a href="#jms-slideshow"><i title="Home" class="icon-home nav_icons selected" style="position: relative;top: 5px;"></i></a></center></li>
 		<li><center><a href="#my_work"><i title="My Work" class="icon-beaker nav_icons" style="font-size: 34px;position: relative;top: 20px;"></i></a></center></li>
 		<li><center><a href="#what_i_love"><i title="What I love" class="icon-heart nav_icons" style="font-size: 32px;position: relative;top: 35px;"></i></a></center></li>
 		<li><center><a href="#what_i_know"><i title="What I Know" class="icon-code nav_icons" style="font-size: 32px;position: relative;top: 50px;"></i></a></center></li>
