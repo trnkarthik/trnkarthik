@@ -17,6 +17,7 @@ var topRange = 200,  // measure from the top of the viewport to X pixels down
 		     contentTop.push( $( $(this).attr('href') ).offset().top );
 		    })
 
+		    /*
 		    // Animate menu scroll to content
 		     $('#left_nav_bar').find('a').click(function(){
 		      var sel = this,
@@ -26,7 +27,8 @@ var topRange = 200,  // measure from the top of the viewport to X pixels down
 		      });
 		      return false;
 		    })
-                     
+                     */
+		    
 		    // adjust side menu
 		    $(window).scroll(function(){
 			var winTop = $(window).scrollTop(),
