@@ -304,7 +304,7 @@ box-shadow: 2px 2px 2px rgba(124, 124, 124, 0.6);
 #pdf {
 	width: 845px;
 height: 600px;
-margin: 2px 85px;
+margin: 2px auto;
 border: 0px solid #69F;
 padding-bottom: 40px;
 }
@@ -313,15 +313,35 @@ padding-bottom: 40px;
 }
 #pdf object {
    display: block;
-   border: solid 1px #ccc;
+border: solid 1px #CCC;
+-webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.72);
 }
 #download_resume{
-	position: absolute;
-right: 4%;
-top: 45%;
-width: 180px;
+	margin: 2px 42.5%;
+margin-bottom: 5px;
+width: 15%;
+min-width: 180px;
 height: 25px;
 font-size: 18px;
 font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
 border: 1px solid rgba(32, 30, 30, 0.45);
+}
+
+.btn_blue {
+color: #FFF;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+background-color: #5B96EE;
+background-image: -moz-linear-gradient(top, #5B96EE, #2F6DBD);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5B96EE), to(#2F6DBD));
+background-image: -webkit-linear-gradient(top, #5B96EE, #2F6DBD);
+background-image: -o-linear-gradient(top, #5B96EE, #2F6DBD);
+background-image: linear-gradient(to bottom, #5B96EE, #2F6DBD);
+background-repeat: repeat-x;
+border-color: #BD362F #BD362F #802420;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+font-weight: bold;
+}
+.btn_blue:hover {
+color: #FFF;
+background-color: #266BD1;
 }
