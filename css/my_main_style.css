@@ -415,12 +415,34 @@ margin: 5px
 }
 #contact_submit:hover{
     background: #FFF;
--webkit-transition: all 0.3s ease-out;
--moz-transition: all 0.3s ease-out;
--ms-transition: all 0.3s ease-out;
--o-transition: all 0.3s ease-out;
-transition: all 0.3s ease-out;
--webkit-box-shadow: 1px 1px 1px #CCC;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    -webkit-box-shadow: 1px 1px 1px #CCC;
     -moz-box-shadow: 1px 1px 1px #CCC;
     box-shadow: 1px 1px 1px #CCC;
+}
+
+.graph{
+background: #07ADAD;
+border: 1px solid #000;
+margin-bottom: 10px;
+position: relative;
+top: 10px;
+left: 20%;
+border-bottom-right-radius: 10px;
+border-top-right-radius: 10px;
+height: 15px;
+-webkit-box-shadow: 2px 2px 2px #000;
+width: 0px;
+}
+
+#skill_table{
+    position: relative;
+    top: 15px;
+    left: 10%;
+    width: 80%;
+    margin-bottom: 40px;
 }

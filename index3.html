@@ -55,13 +55,37 @@
 	        });
 	      </script>
 		
+		<script>
+		    $(document).ready(function() {
+			    var levelArray = $('.graph').map( function() {
+				var skill_level = $(this).attr('skill_level');
+				//for every element draw graph
+				//$(this).css('width',skill_level*5);
+				var obj = this;
+				var position = $('#what_i_know_link').position().top;
+				
+				$(window).scroll(function() {
+				var windowpos = $(window).scrollTop();
+				if (windowpos >= (position-150)) {
+				    $(obj).animate({
+				    width: skill_level*5,
+				    opacity: 0.4,
+				}, 1500 );
+				
+				}
+				});
+				
+				
+			    }).get();
+	        });
+	      </script>
+		
 		<script src="js/highlight_selected_nav_item.js"></script>
 		
 		    
 		    <script type="text/javascript">
 
 $(document).ready(function() {
-    
     $("#totop").hide();
     var s = $(".header");
     var pos = s.position();                    
@@ -210,12 +234,12 @@ window.onload = function (){
 		 <div id="what_i_know_link"></div>
 		 <div id="what_i_know" class="section">
 		    <div class="section_title_special">What I Know</div>
-		    this is my resume
-		    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-		    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-		    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-		    this is my resume
-		 </div>
+		    <div id="skill_table">
+			    <div  class="graph" skill_level="90"></div>
+			    <div  class="graph" skill_level="70"></div>
+			    <div  class="graph" skill_level="90"></div>
+			</div>
+    		 </div>
 		 
 		 <!--Awards and Certifications section -->
 		 <div id="awards_link"></div>
