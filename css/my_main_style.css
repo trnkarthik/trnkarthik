@@ -426,44 +426,89 @@ margin: 5px
 }
 
 .graph{
-background: #07ADAD;
-border: 1px solid #000;
-border-radius: 10px;
-height: 15px;
-width: 0px;
-opacity: 0.1;}
+    background: #07ADAD;
+    border: 1px solid #000;
+    border-radius: 10px;
+    height: 15px;
+    width: 0px;
+    opacity: 0.1;
+}
 .outer_class{
-background: #DA7527;
-border: 1px solid #000;
-margin-bottom: 10px;
-position: relative;
-top: 10px;
-border-radius: 10px;
-height: 15px;
--webkit-box-shadow: 2px 2px 2px #000;
-width: 500px;
-padding-bottom: 3px;
-padding-top: 1px;
-padding-right: 3px;
+    background: #DA7527;
+    border: 1px solid #000;
+    margin-bottom: 10px;
+    position: relative;
+    top: 10px;
+    border-radius: 10px;
+    height: 15px;
+    -webkit-box-shadow: 2px 2px 2px #000;
+    -moz-box-shadow: 2px 2px 2px #000;
+    box-shadow: 2px 2px 2px #000;
+    width: 500px;
+    padding-bottom: 3px;
+    padding-top: 1px;
+    padding-right: 3px;
 }
 #skill_table{
-position: relative;
-top: 15px;
-left: 20%;
-width: 60%;
-margin-bottom: 40px;
-color: #DA7527;
-font-weight: bold;
+    position: relative;
+    top: 15px;
+    left: 20%;
+    width: 60%;
+    margin-bottom: 40px;
+    color: #DA7527;
+    font-weight: bold;
 }
 #skill_table table{
-margin: 0px auto;
+    margin: 0px auto;
 }
 #skill_table td{
-text-align: center;
+    text-align: center;
 }
 .percentage{
     float: right;
-z-index: 10;
-color: #FFF;
-margin: -3px 10px;
+    z-index: 10;
+    color: #FFF;
+    margin: -3px 10px;
+}
+
+.blocks{
+    position: relative;
+    top: 50px;
+    left: 10%;
+    width: 80%;
+    margin-bottom: 50px;
+    color: #DA7527;
+    font-weight: bold;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    border-top-left-radius: 0px;
+    -webkit-box-shadow: 3px 3px 3px #ccc;
+    -moz-box-shadow: 3px 3px 3px #ccc;
+    box-shadow: 3px 3px 3px #ccc;
+}
+.block_title{
+    position: relative;
+top: -34px;
+left: -1px;
+width: 150px;
+height: 32px;
+color: #DA7527;
+font-weight: bold;
+background: rgba(230, 230, 230, 0.3);
+border: 1px solid #CCC;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+text-align: center;
+font-weight: normal;
+font-size: 22px;
+}
+td img{
+border: 1px solid #CCC;
+-webkit-box-shadow: 2px 2px 2px #CCC;
+}
+.blocks table td{
+    padding: 10px;
+text-align: center;
+font-size: 18px;
+font-weight: normal;
 }
