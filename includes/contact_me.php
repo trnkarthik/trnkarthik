@@ -1,8 +1,19 @@
 <script>
     $(document).ready(function() {
+	 
+	$('#wrong_email').hide();
+	 
         $('#contact_submit').click(function(){
             var i = $.fn.validateForm();
-            if(i!=1){
+	     	     
+	     //verifying email id format
+	    var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	    if(regex.test($('#email_id').val())==false){
+	        $('#wrong_email').show();
+		i=1;
+	    }
+	     
+            if(i==0){
                 
                 //posting a comment
                 var message = $('#message').val();
@@ -20,7 +31,11 @@
                         subject:subject,
                     },
                     success: function(msg) {
-                        alert(msg);
+                        if(msg == 1)
+			{
+			    //posted successfully!
+			    $('#contact_me_form').html("<div class='successful_posting'><br/>Your message reached me successfully.<br/>Thanks for contacting me!<br/>I will get back to you at the earliest.</div>");
+			}
                     }
                 });
                 
@@ -28,22 +43,31 @@
         });
         $.fn.validateForm = function() { 
             var i=0;
-            if($('#name').val()=='')
+            if($('#name').val().trim().length==0)
             {
                document.getElementById("name").style.border='1px solid red';
                i=1;
             }
-            if($('#email_id').val()=='')
+            if($('#email_id').val().trim().length==0)
             {
                document.getElementById("email_id").style.border='1px solid red';
                i=1;
             }
-            if($('#message').val()=='')
+            if($('#message').val().trim().length==0)
             {
                document.getElementById("message").style.border='1px solid red';
                i=1;
             }
-            
+	    
+	    /*
+	     var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	    if(regex.test($('#email_id').val())==false)
+	    {
+		//alert("Please verify your email id");
+	        $('#wrong_email').show();
+		i=1;
+	    }
+            */
             return i;
         }
         
@@ -51,6 +75,7 @@
                document.getElementById("name").style.border='1px solid #ccc';
         });
         $('#email_id').focus(function () {
+	       $('#wrong_email').hide();
                document.getElementById("email_id").style.border='1px solid #ccc';
         });
         $('#message').focus(function () {
@@ -84,11 +109,15 @@
 			<table style="margin-left: 10%;">
 			    <tr>
 				<td>Name</td>
-				<td><input type= "text" id="name"></td>
+				<td><input type= "text" id="name"> <span class="required_text">(required)</span></td>
 			    </tr>
 			    <tr>
 				<td>Email Id</td>
-				<td><input type= "text" id="email_id"></td>
+				<td id="email_handling">
+				    <input type= "text" id="email_id">
+					<span class="required_text">(required)</span>
+					<div style='text-align:center;color:red;font-size:20px;' id='wrong_email'>Please verify your email id</div>
+				</td>
 			    </tr>
 			    <tr>
 				<td>Subject</td>
@@ -96,7 +125,8 @@
 			    </tr>
 			    <tr>
 				<td>Message</td>
-				<td><textarea cols=30 rows=5 id="message"></textarea></td>
+				<td><textarea cols=30 rows=5 id="message"></textarea>
+				    <span class="required_text">(required)</span></td>
 			    </tr>
 			    <tr>
 				<td></td>

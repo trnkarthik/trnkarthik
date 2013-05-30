@@ -522,9 +522,19 @@ td img{
 }
 .images_i_love{
     position: absolute;
-left: 65%;
-top: 20%;
-width: 30%;
-font-size: 22px;
-padding-left: 50px;
+    left: 65%;
+    top: 20%;
+    width: 30%;
+    font-size: 22px;
+    padding-left: 50px;
+}
+
+.successful_posting{
+    font-size: 30px;
+    text-align: center;
+}
+.required_text{
+font-size: 14px;
+padding: 3px;
+color: #CCC;
 }
