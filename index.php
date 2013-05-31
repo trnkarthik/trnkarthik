@@ -115,12 +115,6 @@
 	};
 	</script>
 	 
-	<!-- QuickSand Plugin-->
-		<script src="js/jquery-ui-1.10.1.custom.js"></script>
-		
-		<link rel="stylesheet" type="text/css" href="css/products_support_for_quicksand.css" />
-		<script type="text/javascript" src="js/jquery.quicksand.js" ></script>
-		<link href="css/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">
 		
     </head>
     <body>
