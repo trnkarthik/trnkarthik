@@ -1,6 +1,6 @@
 <?php
 include("includes/connect.php");
-$id = $_GET['id'];
+$id = mysql_real_escape_string($_GET['id']);
 //echo $id;
     $query = "select projectName,ProjectStartDate,ProjectEndDate,ProjectTools,ProjectDesc,ProjectURL
                 from projectDetails where projectID='$id'";
