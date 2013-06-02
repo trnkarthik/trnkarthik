@@ -16,18 +16,6 @@ var topRange = 200,  // measure from the top of the viewport to X pixels down
 		    $('#left_nav_bar').find('a').each(function(){
 		     contentTop.push( $( $(this).attr('href') ).offset().top );
 		    })
-
-		    /*
-		    // Animate menu scroll to content
-		     $('#left_nav_bar').find('a').click(function(){
-		      var sel = this,
-		          newTop = Math.min( contentTop[ $('#left_nav_bar a').index( $(this) ) ], $(document).height() - $(window).height() ); // get content top or top position if at the document bottom
-		      $('html,body').stop().animate({ 'scrollTop' : newTop }, animationTime, function(){
-		       window.location.hash = $(sel).attr('href');
-		      });
-		      return false;
-		    })
-                     */
 		    
 		    // adjust side menu
 		    $(window).scroll(function(){

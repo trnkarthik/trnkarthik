@@ -81,7 +81,7 @@
 	 <input type="radio" id="radio4" name="sort" filters="sort" value="size" checked="checked"/><label for="radio4"
 		  style="border-bottom-left-radius: 5px;
 		  border-top-left-radius: 5px;"
-	 >Size</label>
+	 >Date</label>
 	 <input type="radio" id="radio5" name="sort" filters="sort" value="name"/><label for="radio5">Name</label>
       </fieldset>
     </div>
@@ -96,7 +96,7 @@
         
         <ul id="applications" class="image-grid gallery clearfix">
             <?php 
-            $get_projects_query = "select ProjectName,ProjectType,ProjectID from projectDetails where visibility =1";
+            $get_projects_query = "select ProjectName,ProjectType,ProjectID,((year(ProjectStartDate)*12)+month(ProjectStartDate)),ProjectStartDate from projectDetails where visibility =1 order by ProjectStartDate";
             $get_projects = mysql_query($get_projects_query);
             //echo mysql_numrows($get_projects);
             for ($i=0; $row = mysql_fetch_array($get_projects); $i++) {
@@ -104,7 +104,8 @@
                 <a href="project.php?id=<?php echo $row[2] ?>&ajax=true&amp;width=95%&amp;height=95%" rel="prettyPhoto[ajax]">
                    <li data-id="id-<?php echo $i ?>" data-type="<?php echo $row[1] ?>">
                            <strong><?php echo $row[0] ?></strong>
-                        <div data-type="size" class="product_desc"><?php echo ($i); ?></div>
+                        <div><?php echo $row[4]; ?></div>
+                        <span data-type="size" class="product_desc" style="visibility: hidden"><?php echo $row[3]; ?></span>
                    </li>
                 </a>
             <?php 

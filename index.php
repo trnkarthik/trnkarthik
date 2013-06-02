@@ -49,37 +49,33 @@
 	<script>!window.jQuery && document.write(unescape('%3Cscript src="../lib/jquery/jquery.js"%3E%3C/script%3E'));</script>
                   
 	<script src="js/jquery.smooth-scroll.js"></script>
+	<script src="js/viewportcheck.js"></script>
 		
 	<script>
 	    $(document).ready(function() {
 	        $('#left_nav_bar a').smoothScroll({offset:0});
 	        $('.header a').smoothScroll();
 	    });
-	</script>
-		
-	<script>
+	     
 	    $(document).ready(function() {
-		    var levelArray = $('.graph').map( function() {
-			var skill_level = $(this).attr('skill_level');
-			//for every element draw graph
-			//$(this).css('width',skill_level*5);
-			var obj = this;
-			var position = $('#what_i_know_link').position().top;
-			
-			$(window).scroll(function() {
-			var windowpos = $(window).scrollTop();
-			if (windowpos >= (position-150)) {
-			    $(obj).animate({
-			    width: skill_level*5,
-			    opacity: 1,
-			}, 1500 );
-			
+		    $('#skill_table').bind('inview', function (event, visible) {
+			if (visible == true) {
+			    // element is now visible in the viewport
+			    var levelArray = $('.graph').map( function() {
+				var skill_level = $(this).attr('skill_level');
+				var obj = this;
+				$(obj).animate({
+				    width: skill_level*5,
+				    opacity: 1,
+				}, 1500 );
+			    });
+			    $('#skill_table').unbind('inview');
 			}
-			});
-			
-			
-		    }).get();
-	       });
+			else {
+			// element has gone out of viewport
+			}
+		    });
+		});
 	</script>
 		
 	<script src="js/highlight_selected_nav_item.js"></script>
