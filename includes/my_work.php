@@ -101,7 +101,7 @@
             //echo mysql_numrows($get_projects);
             for ($i=0; $row = mysql_fetch_array($get_projects); $i++) {
                ?>
-                <a href="project.php?id=<?php echo $row[2] ?>&ajax=true&amp;width=95%&amp;height=95%" rel="prettyPhoto[ajax]">
+                <a href="project.php?id=<?php echo $row[2] ?>">
                    <li data-id="id-<?php echo $i ?>" data-type="<?php echo $row[1] ?>">
                            <strong><?php echo $row[0] ?></strong>
                         <div><?php echo $row[4]; ?></div>
@@ -116,19 +116,7 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
-    //PrettyPhoto ajax lightbox plugin call
-    $(document).ready(function(){
-        $(".gallery a[rel^='prettyPhoto']").prettyPhoto({
-            animation_speed:'normal',
-            theme:'light_square',/* light_rounded / dark_rounded / light_square / dark_square / facebook */
-            slideshow:false,
-            autoplay_slideshow: false,
-            social_tools:false,
-            counter_separator_label:false,
-            custom_markup:'',
-            hideflash:true,
-            });
-    });
+
                             
     // Custom sorting plugin
 (function($) {
