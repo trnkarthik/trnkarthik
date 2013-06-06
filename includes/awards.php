@@ -1,4 +1,4 @@
-<div id="awards_link"></div>
+<div id="awards_link" class="section_link"></div>
 		 <div id="awards" class="section">
 		    <div class="section_title">Awards and Certifications</div>
 		    <div class="blocks">

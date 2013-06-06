@@ -86,7 +86,7 @@
     
 </script>
 
-<div id="contact_link"></div>
+<div id="contact_link" class="section_link"></div>
 		 <div id="contact" class="section" style="padding-bottom:40px">
 		    <div class="section_title">
 			Contact Me

@@ -1,4 +1,4 @@
-<div id="what_i_love_link"></div>
+<div id="what_i_love_link" class="section_link"></div>
 		 <div id="what_i_love" class="section">
 		    <div class="section_title">What I Love</div>
 			<div class="content_i_love">

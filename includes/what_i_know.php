@@ -1,4 +1,4 @@
-<div id="what_i_know_link"></div>
+<div id="what_i_know_link" class="section_link"></div>
 		 <div id="what_i_know" class="section">
 		    <div class="section_title_special">What I Know</div>
 		    <div id="skill_table">

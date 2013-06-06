@@ -17,7 +17,7 @@ a{
 .container{
 	width: 100%;
 	position: relative;
-	min-height: 750px;
+	min-height: 620px;
 }
 .clr{
 	clear: both;

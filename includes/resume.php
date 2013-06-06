@@ -1,6 +1,6 @@
  
 		 <!--My Resume section -->
-		 <div id="resume_link"></div>
+		 <div id="resume_link" class="section_link"></div>
 		 <div id="resume" class="section">
 		    <div class="section_title_special">My Resume</div>		     
 		     			 

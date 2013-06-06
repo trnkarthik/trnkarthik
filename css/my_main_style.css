@@ -52,7 +52,7 @@
 #my_work{
 	background: #FFF;
 	position: relative;
-	top: -180px;
+	top: 0px;
 	left: 6.5%;
 	min-height: 500px;
 	width: 90%;
@@ -60,7 +60,7 @@
 #what_i_love{
 	background: #FFF;
 	position: relative;
-	top: -220px;
+	top: 0px;
 	left: 6.5%;
 	min-height: 500px;
 	width: 90%;
@@ -68,7 +68,7 @@
 #what_i_know{
 	background: rgba(0, 0, 0, 0.75);
 	position: relative;
-	top: -260px;
+	top: 0px;
 	left: 6.5%;
 	min-height: 500px;
 	width: 90%;
@@ -76,7 +76,7 @@
 #awards{
 	background: #FFF;
 	position: relative;
-	top: -300px;
+	top: 0px;
 	left: 6.5%;
 	min-height: 500px;
 	width: 90%;
@@ -84,7 +84,7 @@
 #resume{
 	background: rgba(0, 0, 0, 0.75);
 	position: relative;
-	top: -340px;
+	top: 0px;
 	left: 6.5%;
 	min-height: 500px;
 	width: 90%;
@@ -92,17 +92,27 @@
 #contact{
 	background: #FFF;
 	position: relative;
-	top: -380px;
+	top: 0px;
 	left: 6.5%;
 	min-height: 500px;
 	width: 90%;
 }
 
-             
+.section_link{
+	background: #00FFF;
+	position: relative;
+	top: 0px;
+	left: 6.5%;
+	height: 60px;
+	width: 90%;
+	margin-top: -40px;
+}
+
+/*            
 #my_work_link{
 	background: #00FFF;
 	position: relative;
-	top: -180px;
+	top: 0px;
 	left: 6.5%;
 	height: 60px;
 	width: 90%;
@@ -110,7 +120,7 @@
 #what_i_love_link{
 	background: #00FFF;
 	position: relative;
-	top: -220px;
+	top: 0px;
 	left: 6.5%;
 	height: 60px;
 	width: 90%;
@@ -118,7 +128,7 @@
 #what_i_know_link{
 	background: #00FFF;
 	position: relative;
-	top: -260px;
+	top: 0px;
 	left: 6.5%;
 	height: 60px;
 	width: 90%;
@@ -126,7 +136,7 @@
 #awards_link{
 	background: #00FFF;
 	position: relative;
-	top: -300px;
+	top: 0px;
 	left: 6.5%;
 	height: 60px;
 	width: 90%;
@@ -134,7 +144,7 @@
 #resume_link{
 	background: #00FFF;
 	position: relative;
-	top: -340px;
+	top: 0px;
 	left: 6.5%;
 	height: 60px;
 	width: 90%;
@@ -142,11 +152,13 @@
 #contact_link{
 	background: #00FFF;
 	position: relative;
-	top: -380px;
+	top: 0px;
 	left: 6.5%;
 	height: 60px;
 	width: 90%;
+	
 }
+*/
 
 .section{
 	border: 1px solid #CCC;
@@ -319,8 +331,8 @@ border: solid 1px #CCC;
 box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.72);
 }
 #download_resume{
-	margin: 2px 42.5%;
-margin-bottom: 5px;
+margin: 10px 42.5%;
+margin-bottom: 10px;
 width: 15%;
 min-width: 180px;
 height: 25px;
