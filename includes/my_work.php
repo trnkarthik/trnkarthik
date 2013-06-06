@@ -101,13 +101,13 @@
             //echo mysql_numrows($get_projects);
             for ($i=0; $row = mysql_fetch_array($get_projects); $i++) {
                ?>
-                <a href="project.php?id=<?php echo $row[2] ?>">
                    <li data-id="id-<?php echo $i ?>" data-type="<?php echo $row[1] ?>">
+                        <a href="project.php?id=<?php echo $row[2] ?>">
                            <strong><?php echo $row[0] ?></strong>
                         <div><?php echo $row[4]; ?></div>
                         <span data-type="size" class="product_desc" style="visibility: hidden"><?php echo $row[3]; ?></span>
+                        </a>
                    </li>
-                </a>
             <?php 
             } 
             ?>

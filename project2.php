@@ -8,12 +8,15 @@
     <script src="js/jquery-ui-1.10.1.custom.js"></script>
      
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
-
+    
+	<link rel="stylesheet" href="css/my_main_style.css">
+	<link rel="stylesheet" type="text/css" href="css/products_support_for_quicksand.css" />
     <?php
         include("includes/connect.php");
-        $id = $_GET['id'];
-        //echo $id;
-            $query = "select projectName,ProjectStartDate,ProjectEndDate,ProjectTools,ProjectDesc,ProjectURL
+	
+        $id = (int)(mysql_real_escape_string($_GET['id']));
+	
+            $query = "select projectName,ProjectStartDate,ProjectEndDate,ProjectTools,ProjectDesc,ProjectURL,ProjectType
                         from projectDetails where projectID='$id'";
             $result = mysql_query($query);
             if(!$result){
@@ -27,6 +30,16 @@
                 $projectTools = $row[3];
                 $projectDesc = $row[4];
                 $projectURL = $row[5];
+                $projectType = $row[6];
+		if($projectType=='android'){
+		  $carousel_height = 500;
+		  $carousel_width = 375;
+		}
+		else if($projectType=='web'){
+		  $carousel_height = 500;
+		  $carousel_width = 700;
+		}
+
             }
     ?>
      
@@ -37,22 +50,35 @@
       $(document).ready(function () {
         var carousel = $("#carousel").waterwheelCarousel({
           flankingItems: 1,
-	  separation:150,
-	  //sizeMultiplier:0.2,
+	  separation:200,
 	  opacityMultiplier:0.4,
 	  autoPlay:3000,
-	  //orientation:'vertical',
 	  keyboardNav:true,
 	  preloadImages:false,
-	  forcedImageWidth:300,
-	  forcedImageHeight:400,
-          clickedCenter: function ($item) {
+	  forcedImageWidth:<?php echo $carousel_width;?>,
+	  forcedImageHeight:<?php echo $carousel_height;?>,
+	  captionBelow:true,
+	  
+	  
+	   clickedCenter: function($clickedItem) {
+      // $clickedItem is a jQuery wrapped object describing the image that was clicked.
+      var imageUrl = $clickedItem.attr('src');
+      alert('The center image was just clicked. The URL of the image is: ' + imageUrl);
+    },
+        });
+             
+        /*  clickedCenter: function ($item) {
             //alert("center clicked!");
-            $('#callback-output').prepend('clickedCenter: ' + $item.attr('id') + '<br/>');
-	    alert($item );
+	          var imageID = $newCenterItem.attr('id'); // Get the HTML element "id" for this image. Let's say it's "tigerpicture"
+      $('#'+imageID+'-information').show(); // this will show the HTML element with id of "tigerpicture-information" on your site.
+
+	    
+           // $('#callback-output').prepend('clickedCenter: ' + $item.attr('id') + '<br/>');
+	    alert(imageID );
           }
         });
-      
+      */
+	
         $('#prev').bind('click', function () {
           carousel.prev();
           return false
@@ -79,7 +105,8 @@
       body {
         font-family:Arial;
         font-size:12px;
-        background:#ededed;
+	font-family: 'Open Sans Condensed','Arial Narrow', serif;
+	font-weight: 400;
       }
       .example-desc {
         margin:3px 0;
@@ -87,13 +114,12 @@
       }
 
       #carousel {
-        width:660px;
+        width:100%;
         border:0px solid #222;
-        height:450px;
+        height:550px;
         position:relative;
         clear:both;
         overflow:hidden;
-        background:#FFF;
 	margin-left: auto;
 	margin-right: auto;
       }
@@ -108,36 +134,80 @@
       }
       .carousel-links {
 	position: relative;
-	left: 90%;
+	
 	}
         
     #project_title{
     text-align: center;
-    font-size: 25px;
-    background: #F00;        
+font-size: 21px;
+background: rgba(197, 197, 197, 0.26);
+padding: 10px;
+border-bottom: 1px solid #CCC;
+font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+font-weight: 400;
+text-shadow: rgba(255, 255, 255, 0.85) 0 0 3px;
     }
     #project_desc{
-        background: #008000;
-        width: 27.5%;
-        min-height: 100px;
-        float: left;
-        text-align: center;
+        width: 100%;
+	min-height: 80px;
+	float: left;
+	font-size: 18px;
+	border-bottom: 1px solid #CCC;
+	text-indent: 25px;
     }
     #project_media{
-        background: blue;
-        width: 72.5%;
-        min-height: 100px;
-        float: left;
-        text-align: center;
+        width: 100%;
+min-height: 600px;
+float: left;
+text-align: center;
+padding-top: 40px;
+margin-left: -1px;
+border-left: 1px solid rgba(185, 185, 185, 0.38);
+background: rgba(247, 247, 247, 0.12);
+
     }
+    a {
+color: #555;
+}
+body{
+  min-height: 0px;
+}
+#download_repository{
+margin: 2px 37.5%;
+margin-bottom: 10px;
+margin-top: 10px;
+width: 25%;
+min-width: 180px;
+height: 25px;
+font-size: 18px;
+font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+border: 1px solid rgba(32, 30, 30, 0.45);
+}
 </style>
 </head>
 
 <body>
-<div id="project_title">
-    <?php echo $projectName;?>
+        <div class="container">
+            
+		<?php include("includes/header2.php");?>
+	     
+	</div>
+
+<div id="my_work" class="section">
+  
 </div>
+<div id="project_title">
+    <a href="#">
+    <?php echo $projectName;?>
+    </a>
+    
+</div>
+
 <div id="project_desc">
+    <a href="#home" id="download_repository" class="btn_blue btn" style="float: right">
+      Download Repository from Github
+    </a>
+
     <?php echo $projectDesc;?>
 </div>
 <div id="project_media">

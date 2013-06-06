@@ -1,9 +1,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
     
-  <html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
      
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300,300italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300,300italic' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
     <script src="js/jquery-ui-1.10.1.custom.js"></script>
      
@@ -11,6 +11,9 @@
     
 	<link rel="stylesheet" href="css/my_main_style.css">
 	<link rel="stylesheet" type="text/css" href="css/products_support_for_quicksand.css" />
+	
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	
     <?php
         include("includes/connect.php");
 	
@@ -106,7 +109,8 @@
         font-family:Arial;
         font-size:12px;
 	font-family: 'Open Sans Condensed','Arial Narrow', serif;
-font-weight: 400;
+	font-weight: 400;
+	background: #DDD url(./images/bg2.png) repeat;
       }
       .example-desc {
         margin:3px 0;
@@ -140,39 +144,109 @@ font-weight: 400;
     #project_title{
     text-align: center;
 font-size: 21px;
-background: rgba(197, 197, 197, 0.26);
+background: rgba(248, 248, 248, 0.9);
 padding: 10px;
-border-bottom: 1px solid #CCC;
 font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 font-weight: 400;
 text-shadow: rgba(255, 255, 255, 0.85) 0 0 3px;
+border-bottom: 1px solid rgba(211, 211, 211, 0.49);
     }
     #project_desc{
-        width: 100%;
-	min-height: 80px;
-	float: left;
-	font-size: 18px;
-	border-bottom: 1px solid #CCC;
-	text-indent: 25px;
+        background: #FFF;
+position: relative;
+top: 0px;
+left: 5%;
+min-height: 100px;
+width: 90%;
+border-top: 0px;
+font-size: 19px;
+padding: 1px;
     }
     #project_media{
-        width: 100%;
-min-height: 600px;
-float: left;
-text-align: center;
-padding-top: 40px;
-margin-left: -1px;
-border-left: 1px solid rgba(185, 185, 185, 0.38);
-background: rgba(247, 247, 247, 0.12);
+      background: #FFF;
+      position: relative;
+      top: 20px;
+      left: 5%;
+      min-height: 100px;
+      width: 90%;
+      border-top: 0px;
+      font-size: 19px;
+      padding: 1px;
+    }
+    #project_credits{
+      background: #FFF;
+      position: relative;
+      top: 40px;
+      left: 5%;
+      min-height: 100px;
+      width: 90%;
+      border-top: 0px;
+      font-size: 19px;
+      padding: 1px;
     }
     a {
 color: #555;
 }
 body{
   min-height: 0px;
-  background: rgba(224, 224, 224, 0.14);
+}
+#download_repository{
+margin: 2px 37.5%;
+margin-bottom: 20px;
+margin-top: 10px;
+width: 25%;
+min-width: 180px;
+height: 25px;
+font-size: 18px;
+font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+border: 1px solid rgba(32, 30, 30, 0.45);
+}
+.footer{
+  background: #FFF;
+position: relative;
+top: 60px;
+min-height: 100px;
+border-top: 0px;
+font-size: 19px;
+padding: 1px;
 }
 </style>
+
+	<script src="js/jquery.smooth-scroll.js"></script>
+	<script src="js/viewportcheck.js"></script>
+
+
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+	        $('#left_nav_bar a').smoothScroll({offset:0});
+	        $('.header a').smoothScroll();
+	    });
+	
+	$(document).ready(function() {
+	    $("#totop").hide();
+	    var s = $(".header");
+	    var pos = s.position();                    
+	    $(window).scroll(function() {
+		var windowpos = $(window).scrollTop();
+		if (windowpos >= 60) {
+		    s.removeClass("header"); 
+		    s.addClass("stick");
+		} else{
+		    s.removeClass("stick"); 
+		    s.addClass("header");
+		}
+		
+		if(s.attr('class')=="header"){
+		    $("#totop").hide();
+		}
+		else{
+		    $("#totop").show();
+		}
+	    });
+	});	
+	</script>
+
 </head>
 
 <body>
@@ -182,20 +256,40 @@ body{
 	     
 	</div>
 
-  
 <div id="project_title">
     <a href="#">
     <?php echo $projectName;?>
     </a>
-</div>
-<div id="project_desc">
-    <?php echo $projectDesc;?>
-</div>
-<div id="project_media">
     
-    <?php
-        include("includes/carousel.php");
-    
-    ?>
 </div>
+
+<div id="project_desc" class="section">
+     <div class="section_title">About <?php echo $projectName;?></div>
+      <div style="margin: 30px;">
+	  <?php echo $projectDesc;?>
+      </div>
+    <a href="#home" id="download_repository" class="btn_blue btn">
+      Download Repository from Github
+    </a>
+</div>
+
+<div id="project_media" class="section">
+		    <div class="section_title_special">Screen shots</div>
+		    <?php include("includes/carousel.php"); ?>
+</div>
+
+<div id="project_credits" class="section">
+     <div class="section_title">Project Credits</div>
+      <div style="margin: 30px;">
+	  <?php echo $projectDesc;?>
+      </div>
+    <a href="#home" id="download_repository" class="btn_blue btn">
+      Download Repository from Github
+    </a>
+</div>
+
+<div class="section footer">
+    
+</div>
+
 </body>

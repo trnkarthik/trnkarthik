@@ -111,6 +111,17 @@
 	};
 	</script>
 	 
+	 <style>
+	    .footer{
+  background: #FFF;
+position: relative;
+top: 60px;
+min-height: 100px;
+border-top: 0px;
+font-size: 19px;
+padding: 1px;
+}
+	 </style>
 		
     </head>
     <body>
@@ -134,9 +145,15 @@
 		 <!--Awards and Certifications section -->
 		 <?php include("includes/awards.php");?>
 		 
+		 <!--My Resume section -->
+		 <?php include("includes/resume.php");?>
+		 
 		 <!--Contact Me section -->
 		 <?php include("includes/contact_me.php");?>
 		
+		<div class="section footer">
+    
+</div>
 		
 		
     </body>
