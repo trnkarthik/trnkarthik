@@ -314,7 +314,7 @@ box-shadow: 2px 2px 2px rgba(124, 124, 124, 0.6);
 }
 
 #pdf {
-	width: 845px;
+width: 845px;
 height: 600px;
 margin: 2px auto;
 border: 0px solid #69F;
@@ -549,4 +549,16 @@ td img{
 font-size: 14px;
 padding: 3px;
 color: #CCC;
+}
+.footer{
+position: relative;
+top: 100px;
+min-height: 30px;
+font-size: 14px;
+background: rgba(0, 0, 0, 0.75);
+border-top: 1px solid #EEE;
+text-align: center;
+color: #FFF;
+font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+padding-top: 15px;
 }

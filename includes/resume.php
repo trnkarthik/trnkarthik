@@ -3,8 +3,8 @@
 		 <div id="resume_link" class="section_link"></div>
 		 <div id="resume" class="section">
 		    <div class="section_title_special">My Resume</div>		     
-		     			 
-			<a href="#home" id="download_resume" class="btn_blue btn">
+		     	
+			<a href="includes/resume_download.php" id="download_resume" class="btn_blue btn">
 			    <i id="totop" title="Go to Top" class="icon-file-alt" style="font-size: 20px;float: left"></i>Download Resume
 		        </a>
 			

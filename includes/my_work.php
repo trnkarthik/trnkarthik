@@ -52,6 +52,25 @@
       .more_desc{
 	 padding: 15px;
       }
+      .project_period_web{
+        background: #1E9DB9;
+        padding: 4px;
+        color: #FFF;
+        -webkit-box-shadow: 3px 3px 3px #CCC;
+      }
+      .project_period_android{
+        background: #DA7527;
+        padding: 4px;
+        color: #FFF;
+        -webkit-box-shadow: 3px 3px 3px #CCC;
+      }
+     .webapp_active{
+        border-top: 3px solid #1E9DB9;
+     }
+     .android_active{
+        border-top: 3px solid #DA7527;
+     }
+
    </style>
    
  
@@ -69,9 +88,12 @@
         <form id="filter">
     <div id="radio">
       <fieldset id="filter_by_type">
-	 <input type="radio" name="radio1" id="radio1" filters="type" value="all" checked="checked"  /><label for="radio1">All Projects</label>
-	 <input type="radio" name="radio1" id="radio2" filters="type" value="web" /><label for="radio2">Web Applications</label>
-	 <input type="radio" name="radio1" id="radio3" filters="type" value="android"/><label for="radio3"
+	 <input type="radio" name="radio1" id="radio1" filters="type" value="all" checked="checked"  />
+            <label for="radio1">All Projects</label>
+	 <input type="radio" name="radio1" id="radio2" filters="type" value="web" />
+            <label for="radio2">Web Applications</label>
+	 <input type="radio" name="radio1" id="radio3" filters="type" value="android"/>
+            <label for="radio3"
 		  style="border-bottom-right-radius: 5px;
 		  border-top-right-radius: 5px;"
 		  >Android Applications</label>
@@ -96,16 +118,48 @@
         
         <ul id="applications" class="image-grid gallery clearfix">
             <?php 
-            $get_projects_query = "select ProjectName,ProjectType,ProjectID,((year(ProjectStartDate)*12)+month(ProjectStartDate)),ProjectStartDate from projectDetails where visibility =1 order by ProjectStartDate";
+            $get_projects_query ="SELECT pd.ProjectName,pd.ProjectType,pd.ProjectID, 
+                                ((YEAR(pd.ProjectStartDate)*12)+MONTH(pd.ProjectStartDate)),
+                                pd.ProjectStartDate,pt.mainthumb,LEFT(pd.ProjectDesc,67),
+                                pd.ProjectEndDate
+                                FROM projectthumbs pt, projectdetails pd
+                                WHERE pd.projectid = pt.projectid
+                                AND pd.visibility =1
+                                order by ProjectStartDate";
             $get_projects = mysql_query($get_projects_query);
             //echo mysql_numrows($get_projects);
             for ($i=0; $row = mysql_fetch_array($get_projects); $i++) {
+                if(file_exists($row[5])){
+                    $temp_url = $row[5];
+                    $temp_start_date = $row[4];
+                    $temp_end_date = $row[7];
+                }
+                else{
+                    $temp_url = "images/thumbs/default_thumb.png";
+                }
                ?>
-                   <li data-id="id-<?php echo $i ?>" data-type="<?php echo $row[1] ?>">
+                   <li data-id="id-<?php echo $i ?>" data-type="<?php echo $row[1]; ?>">
                         <a href="project.php?id=<?php echo $row[2] ?>">
-                           <strong><?php echo $row[0] ?></strong>
-                        <div><?php echo $row[4]; ?></div>
+                           <strong><?php echo $row[0]; ?></strong>
+                        <div class="project_period_<?php echo $row[1]; ?>">
+                                                                <?php
+                                                                echo date("M Y",strtotime($row[4]));
+                                                                if($row[7]!=null)
+                                                                {
+                                                                    echo " - ".date("M Y",strtotime($row[7]));
+                                                                }
+                                                                ?>
+                                                                </div>
+                        <img src="<?php echo $temp_url; ?>" <?php
+                                                        if($row[1]=='web'){
+                                                            echo "width='177' height='115'";
+                                                        }
+                                                        else if($row[1]=='android'){
+                                                            echo "width='75' height='115'";
+                                                        }
+                                                        ?> alt="" />
                         <span data-type="size" class="product_desc" style="visibility: hidden"><?php echo $row[3]; ?></span>
+                        <div ><?php echo $row[6]."..."; ?></div>
                         </a>
                    </li>
             <?php 
@@ -189,4 +243,44 @@ $(function() {
 
 });
 
+//color tags to tabs in my_work section
+  $("label[for='radio2']").click(function() {
+        if($(this).hasClass("ui-state-active")) {
+            $("label[for='radio2']").addClass('webapp_active');
+            $("label[for='radio3']").removeClass('android_active');
+        }
+  });
+  $("label[for='radio3']").click(function() {
+        if($(this).hasClass("ui-state-active")) {
+            $("label[for='radio3']").addClass('android_active');
+            $("label[for='radio2']").removeClass('webapp_active');
+        }
+  });
+  $("label[for='radio1']").click(function() {
+        if($(this).hasClass("ui-state-active")) {
+            $("label[for='radio2']").removeClass('webapp_active');
+            $("label[for='radio3']").removeClass('android_active');
+        }
+  });
+    
+    
+  $("label[for='radio2']").mouseover(function() {
+            $("label[for='radio2']").addClass('webapp_active');
+  });
+  $("label[for='radio2']").mouseout(function() {
+        if(!$(this).hasClass("ui-state-active")) {
+            $("label[for='radio2']").removeClass('webapp_active');
+        }
+  });
+
+  
+  $("label[for='radio3']").mouseover(function() {
+            $("label[for='radio3']").addClass('android_active');
+  });
+  $("label[for='radio3']").mouseout(function() {
+        if(!$(this).hasClass("ui-state-active")) {
+            $("label[for='radio3']").removeClass('android_active');
+        }
+  });
+  
 </script>

@@ -1,3 +1,16 @@
+<style>
+    .step img {
+position: absolute;
+left: 60%;
+top: -15%;
+width: 325px;
+height: 550px;
+}
+.color-1 {
+background-color: #E3D8FF;
+background-color: rgba(139, 139, 139, 1);
+}
+</style>
 <section id="jms-slideshow" class="jms-slideshow">
     <div class="step" data-color="color-1" data-x="2000" data-y="1000" data-z="3000" data-rotate="-20">
 	<div class="jms-content">
@@ -5,7 +18,7 @@
 	    <p>From fairest creatures we desire increase, that thereby beauty's rose might never die</p>
 	    <a class="jms-link" href="#">Read more</a>
 	</div>
-	<img src="images/1.png" />
+	<img src="http://localhost/trnkarthik/images/BMIApplication_with_shadow/1.png" width=250px height=450px/>
 	</div>
      
     <div class="step" data-color="color-2" data-x="1000" data-z="2000" data-rotate="20">

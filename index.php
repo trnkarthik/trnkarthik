@@ -76,6 +76,9 @@
 			}
 		    });
 		});
+		 
+		 
+		
 	</script>
 		
 	<script src="js/highlight_selected_nav_item.js"></script>
@@ -107,22 +110,10 @@
 	<script type="text/javascript" src="js/pdfobject.js"></script>
 	<script type="text/javascript">      
 	window.onload = function (){
-	    var success = new PDFObject({ url: "RajaNarasimhaKarthikTangirala.pdf" }).embed("pdf");
+	    var success = new PDFObject({ url: "includes/RajaNarasimhaKarthikTangirala.pdf" }).embed("pdf");
 	};
 	</script>
 	 
-	 <style>
-	    .footer{
-  background: #FFF;
-position: relative;
-top: 60px;
-min-height: 100px;
-border-top: 0px;
-font-size: 19px;
-padding: 1px;
-}
-	 </style>
-		
     </head>
     <body>
         <div class="container">
@@ -150,10 +141,9 @@ padding: 1px;
 		 
 		 <!--Contact Me section -->
 		 <?php include("includes/contact_me.php");?>
-		
-		<div class="section footer">
-    
-</div>
+		 
+		 <!--Footer-->
+		<?php include("includes/footer.php"); ?>
 		
 		
     </body>

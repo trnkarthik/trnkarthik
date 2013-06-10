@@ -35,12 +35,14 @@
                 $projectURL = $row[5];
                 $projectType = $row[6];
 		if($projectType=='android'){
-		  $carousel_height = 500;
-		  $carousel_width = 375;
+		  $carousel_height = 600;
+		  $carousel_width = 350;
+		  $carousel_separation = 125;
 		}
 		else if($projectType=='web'){
 		  $carousel_height = 500;
 		  $carousel_width = 700;
+		  $carousel_separation = 175;
 		}
 
             }
@@ -53,11 +55,11 @@
       $(document).ready(function () {
         var carousel = $("#carousel").waterwheelCarousel({
           flankingItems: 1,
-	  separation:200,
-	  opacityMultiplier:0.4,
+	  separation:<?php echo $carousel_separation;?>,
+	  opacityMultiplier:0.6,
 	  autoPlay:3000,
 	  keyboardNav:true,
-	  preloadImages:false,
+	  preloadImages:true,
 	  forcedImageWidth:<?php echo $carousel_width;?>,
 	  forcedImageHeight:<?php echo $carousel_height;?>,
 	  captionBelow:true,
@@ -130,17 +132,22 @@
       #carousel img {
         visibility:hidden; /* hide images until carousel can handle them */
         cursor:pointer; /* otherwise it's not as obvious items can be clicked */
-	background: white;
-	border: 1px solid #ccc;
-	-moz-box-shadow: 2px 2px 2px #ccc;
-	-webkit-box-shadow: 2px 2px 2px #ccc;
-	box-shadow: 2px 2px 2px #ccc;
       }
       .carousel-links {
-	position: relative;
-	
+position: relative;
+text-align: center;
+margin-right: 20px;
+padding-bottom: 20px;
+padding-top: 0px;
 	}
-        
+.carousel-links i{
+color: #555;
+font-weight: bold;
+font-size: 1.8em;
+	}  
+.carousel-links i:hover{
+color: black;
+	}  
     #project_title{
     text-align: center;
 font-size: 21px;
@@ -159,7 +166,7 @@ left: 5%;
 min-height: 100px;
 width: 90%;
 border-top: 0px;
-font-size: 19px;
+font-size: 18px;
 padding: 1px;
     }
     #project_media{
@@ -170,7 +177,7 @@ padding: 1px;
       min-height: 100px;
       width: 90%;
       border-top: 0px;
-      font-size: 19px;
+      font-size: 18px;
       padding: 1px;
     }
     #project_credits{
@@ -181,7 +188,7 @@ padding: 1px;
       min-height: 100px;
       width: 90%;
       border-top: 0px;
-      font-size: 19px;
+      font-size: 18px;
       padding: 1px;
     }
     a {
@@ -201,14 +208,8 @@ font-size: 18px;
 font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
 border: 1px solid rgba(32, 30, 30, 0.45);
 }
-.footer{
-  background: #FFF;
-position: relative;
-top: 60px;
-min-height: 100px;
-border-top: 0px;
-font-size: 19px;
-padding: 1px;
+.section_title{
+  font-size: 21px;
 }
 </style>
 
@@ -269,7 +270,7 @@ padding: 1px;
 	  <?php echo $projectDesc;?>
       </div>
     <a href="#home" id="download_repository" class="btn_blue btn">
-      Download Repository from Github
+      Download Source Code from Github
     </a>
 </div>
 
@@ -288,8 +289,6 @@ padding: 1px;
     </a>
 </div>
 
-<div class="section footer">
-    
-</div>
+  <?php include("includes/footer.php"); ?>
 
 </body>
