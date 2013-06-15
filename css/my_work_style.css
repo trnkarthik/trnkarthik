@@ -1,0 +1,83 @@
+      .image-grid li{
+	 background: none repeat scroll 0 0 rgba(255, 255, 255);
+	 border-radius: 5px 5px 5px 5px;
+         -webkit-box-shadow: 4px 4px rgba(0, 0, 0, 0.05);
+         -moz-box-shadow: 4px 4px rgba(0, 0, 0, 0.05);
+	 box-shadow: 4px 4px rgba(0, 0, 0, 0.05);
+	 margin-bottom: 2.8125%;
+	 position: relative;
+         text-align: center;
+	 top: 20px;
+	 width: 270px;
+	 height: 272px;
+   	 background: rgb(255, 255, 255);
+	 border: 1px solid rgb(231, 231, 231);
+      }
+      .clearfix{
+         display: block;
+	 margin-left: auto;
+	 margin-right: auto;
+      }
+      #filter_by_type{
+	 position: relative;
+         top: 40px;
+         margin-left: auto;
+         margin-right: auto;
+         width: 440px;
+         border: 0px;
+      }
+      #filter_by_sort{
+	 position: relative;
+         right: 45px;
+         width: 140px;
+         border: 0px;
+         margin-left: auto;
+      }
+      .product_desc{
+	 padding: 15px;
+      }
+      .more_desc{
+	 padding: 15px;
+      }
+      .project_period_web{
+        background: #1E9DB9;
+        padding: 4px;
+        color: #FFF;
+        -webkit-box-shadow: 3px 3px 3px #CCC;
+        -moz-box-shadow: 3px 3px 3px #CCC;
+	box-shadow: 3px 3px 3px #CCC;
+      }
+      .project_period_android{
+        background: #DA7527;
+        padding: 4px;
+        color: #FFF;
+        -webkit-box-shadow: 3px 3px 3px #CCC;
+        -moz-box-shadow: 3px 3px 3px #CCC;
+	box-shadow: 3px 3px 3px #CCC;
+      }
+     .webapp_active{
+        border-top: 3px solid #1E9DB9;
+     }
+     .android_active{
+        border-top: 3px solid #DA7527;
+     }
+     .other_projects{
+      position: relative;
+      top: 50px;
+      left: 10%;
+      width: 80%;
+      margin-bottom: 80px;
+      color: #DA7527;
+      text-align: left;
+      font-weight: normal;
+      font-size: 22px;
+     }
+     .other_projects ol{
+      margin-top: 10px;
+      color: #000;
+      text-align: left;
+      font-weight: normal;
+      font-size: 16px;
+      text-indent: 30px;
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+     }

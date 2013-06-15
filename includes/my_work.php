@@ -10,80 +10,36 @@
                  
 <!-- PrettyPhoto Plugin-->
                 <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+                <link rel="stylesheet" href="css/my_work_style.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
 		<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
-   
-   <style>
-      .image-grid li{
-	 background: none repeat scroll 0 0 rgba(255, 255, 255);
-	 border-radius: 5px 5px 5px 5px;
-	 box-shadow: 4px 4px rgba(0, 0, 0, 0.05);
-	 margin-bottom: 2.8125%;
-	 position: relative;
-         text-align: center;
-	 top: 20px;
-	 width: 270px;
-	 height: 272px;
-   	 background: rgb(255, 255, 255);
-	 border: 1px solid rgb(231, 231, 231);
-      }
-      .clearfix{
-         display: block;
-	 margin-left: auto;
-	 margin-right: auto;
-      }
-      #filter_by_type{
-	 position: relative;
-         top: 40px;
-         margin-left: auto;
-         margin-right: auto;
-         width: 440px;
-         border: 0px;
-      }
-      #filter_by_sort{
-	 position: relative;
-         right: 45px;
-         width: 140px;
-         border: 0px;
-         margin-left: auto;
-      }
-      .product_desc{
-	 padding: 15px;
-      }
-      .more_desc{
-	 padding: 15px;
-      }
-      .project_period_web{
-        background: #1E9DB9;
-        padding: 4px;
-        color: #FFF;
-        -webkit-box-shadow: 3px 3px 3px #CCC;
-      }
-      .project_period_android{
-        background: #DA7527;
-        padding: 4px;
-        color: #FFF;
-        -webkit-box-shadow: 3px 3px 3px #CCC;
-      }
-     .webapp_active{
-        border-top: 3px solid #1E9DB9;
-     }
-     .android_active{
-        border-top: 3px solid #DA7527;
-     }
-
-   </style>
-   
- 
-
-
+                
+                <script>
+                        //PrettyPhoto ajax lightbox plugin call
+                    $(document).ready(function(){
+                        $("a[rel^='prettyPhoto']").prettyPhoto({
+                        animation_speed:'normal',
+                        theme:'light_square',/* light_rounded / dark_rounded / light_square / dark_square / facebook */
+                        slideshow:false,
+                        autoplay_slideshow: false,
+                        social_tools:false,
+                        counter_separator_label:false,
+                        custom_markup:'',
+                        hideflash:true,
+                        keyboard_shortcuts: false,
+                        });
+                        $('#close_light_box').live('click', function() {
+                            $.prettyPhoto.close();
+                            return false;
+                        });     
+                    });
+                </script>
 
 
 <div id="my_work_link" class="section_link" style="margin-top: -50px;"></div>
 <div id="my_work" class="section">
     
     <div class="section_title">My work</div>
-    <div>
-        
+    <div>        
         
         <form id="filter">
     <div id="radio">
@@ -120,12 +76,12 @@
             <?php 
             $get_projects_query ="SELECT pd.ProjectName,pd.ProjectType,pd.ProjectID, 
                                 ((YEAR(pd.ProjectStartDate)*12)+MONTH(pd.ProjectStartDate)),
-                                pd.ProjectStartDate,pt.mainthumb,LEFT(pd.ProjectDesc,67),
+                                pd.ProjectStartDate,pt.mainthumb,LEFT(pd.ProjectMiniDesc,67),
                                 pd.ProjectEndDate
                                 FROM projectthumbs pt, projectdetails pd
                                 WHERE pd.projectid = pt.projectid
                                 AND pd.visibility =1
-                                order by ProjectStartDate";
+                                order by ProjectStartDate desc";
             $get_projects = mysql_query($get_projects_query);
             //echo mysql_numrows($get_projects);
             for ($i=0; $row = mysql_fetch_array($get_projects); $i++) {
@@ -159,7 +115,7 @@
                                                         }
                                                         ?> alt="" />
                         <span data-type="size" class="product_desc" style="visibility: hidden"><?php echo $row[3]; ?></span>
-                        <div ><?php echo $row[6]."..."; ?></div>
+                        <div ><?php echo strip_tags($row[6])."..."; ?></div>
                         </a>
                    </li>
             <?php 
@@ -167,7 +123,27 @@
             ?>
         </ul>
     </div>
-</div>
+            
+        <div class="other_projects">
+            Other Projects
+            <ol>
+                <li>
+                    Currency Converter - Anroid Application
+                </li>
+                <li>
+                    Online Bookstore Management System - Web Application
+                </li>
+                <li>
+                    Gene Microsatellite Extractor Tool - Web Application
+                </li>
+                <li>
+                    Survey Management System - Web Application
+                </li>
+            </ol>
+            
+        </div>
+            
+    <?php include("includes/my_experience.php");?>
 
 <script type="text/javascript" charset="utf-8">
 

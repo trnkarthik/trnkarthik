@@ -18,6 +18,8 @@
 	border: 1px solid #CCC;
 	border-radius: 3px;
 	-webkit-box-shadow: 3px 3px 3px #8C8D8D;
+	-moz-box-shadow: 3px 3px 3px #8C8D8D;
+	box-shadow: 3px 3px 3px #8C8D8D;
 }
 .nav_icons{
 	font-size: 35px;
@@ -175,6 +177,8 @@ ul{
 	border: 1px solid #52CFEB;
 	background: #07D4DD;
 	-webkit-box-shadow: 1px 1px 1px #CCC;
+	-moz-box-shadow: 1px 1px 1px #CCC;
+	box-shadow: 1px 1px 1px #CCC;
 	border-radius: 2px;
 	padding: 6px;
 	color: #FFF;
@@ -191,6 +195,8 @@ ul{
         min-height: 30px;
         padding: 14px 0px 13px;	    
         -webkit-box-shadow: 3px 3px 3px #8C8D8D;
+	-moz-box-shadow: 3px 3px 3px #8C8D8D;
+	box-shadow: 3px 3px 3px #8C8D8D;
         position: relative;
         width: 100%
 } 
@@ -203,6 +209,8 @@ ul{
 	min-height: 30px;
 	padding: 14px 0px 13px;
 	-webkit-box-shadow: 3px 3px 3px rgba(140, 141, 141, 0.5);
+	-moz-box-shadow: 3px 3px 3px rgba(140, 141, 141, 0.5);
+	box-shadow: 3px 3px 3px rgba(140, 141, 141, 0.5);
 	position: fixed;
 	z-index: 9999;
 	width: 100%;
@@ -242,11 +250,11 @@ ul{
 	color: #FFF;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	background-color: #DA4F49;
+	background-image: linear-gradient(to bottom, #EE5F5B, #BD362F);
 	background-image: -moz-linear-gradient(top, #EE5F5B, #BD362F);
 	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#EE5F5B), to(#BD362F));
 	background-image: -webkit-linear-gradient(top, #EE5F5B, #BD362F);
 	background-image: -o-linear-gradient(top, #EE5F5B, #BD362F);
-	background-image: linear-gradient(to bottom, #EE5F5B, #BD362F);
 	background-repeat: repeat-x;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
 	border-color: #BD362F #BD362F #802420;
@@ -383,6 +391,9 @@ position: relative;
 top: 5px;
 margin: 5px
 }
+#social_connect ul li a{
+font-family: 'Open Sans Condensed','Arial Narrow', serif;
+}
 #social_connect ul li i:hover{
 
     font-size: 42px;
@@ -424,6 +435,7 @@ margin: 5px
 #contact_submit{
     font-family: 'Open Sans Condensed','Arial Narrow', serif;
     font-size: 20px;
+    padding: 4px;
 }
 #contact_submit:hover{
     background: #FFF;

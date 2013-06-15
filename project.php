@@ -19,7 +19,8 @@
 	
         $id = (int)(mysql_real_escape_string($_GET['id']));
 	
-            $query = "select projectName,ProjectStartDate,ProjectEndDate,ProjectTools,ProjectDesc,ProjectURL,ProjectType
+            $query = "select projectName,ProjectStartDate,ProjectEndDate,ProjectTools,ProjectDesc,
+		      ProjectURL,ProjectType,ProjectCredits
                         from projectDetails where projectID='$id'";
             $result = mysql_query($query);
             if(!$result){
@@ -34,6 +35,7 @@
                 $projectDesc = $row[4];
                 $projectURL = $row[5];
                 $projectType = $row[6];
+                $projectCredits = $row[7];
 		if($projectType=='android'){
 		  $carousel_height = 600;
 		  $carousel_width = 350;
@@ -68,7 +70,7 @@
 	   clickedCenter: function($clickedItem) {
       // $clickedItem is a jQuery wrapped object describing the image that was clicked.
       var imageUrl = $clickedItem.attr('src');
-      alert('The center image was just clicked. The URL of the image is: ' + imageUrl);
+      //alert('The center image was just clicked. The URL of the image is: ' + imageUrl);
     },
         });
              
@@ -199,7 +201,7 @@ body{
 }
 #download_repository{
 margin: 2px 37.5%;
-margin-bottom: 20px;
+margin-bottom: 30px;
 margin-top: 10px;
 width: 25%;
 min-width: 180px;
@@ -208,8 +210,53 @@ font-size: 18px;
 font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
 border: 1px solid rgba(32, 30, 30, 0.45);
 }
-.section_title{
+.section_title,.section_title_special{
   font-size: 21px;
+}
+.project_desc_head{
+  text-align: left;
+  color: #DA7527;
+}
+.project_desc_body{
+  margin-left: 30px;
+  font-size: 16px;
+  margin-top: 20px;
+}
+.project_credits_block{
+  text-align: left;
+}
+.project_credits_block_head{
+  text-align: left;
+  color: #DA7527;
+}
+.project_credits_block table{
+  margin-left: 55px;
+}
+.project_desc_sub_head{
+display: block;
+text-indent: 20px;
+color: #DA7527;
+font-size: 16px;
+}
+.project_desc_sub_body{
+display: block;
+text-indent: 40px;
+font-size: 16px;
+}
+.project_desc_sub_body bit{
+display: block;
+text-indent: 40px;
+font-size: 16px;
+}
+b{
+color: #1E9DB9;
+}
+body {
+font-family: Arial;
+font-size: 12px;
+font-family: 'Open Sans Condensed','Arial Narrow', serif;
+font-weight: 400;
+font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
 </style>
 
@@ -266,12 +313,67 @@ border: 1px solid rgba(32, 30, 30, 0.45);
 
 <div id="project_desc" class="section">
      <div class="section_title">About <?php echo $projectName;?></div>
-      <div style="margin: 30px;">
-	  <?php echo $projectDesc;?>
+      <div style="margin: 40px;margin-bottom: 5px;">
+	    <span class="project_desc_head">
+	    <?php echo $projectName;?>
+	    </span><br/>
+	      <?php echo $projectDesc;?>
+	    <!-- project desc start 
+	    <p>
+	      <div class="project_desc_body">
+		<span class="project_desc_sub_head">
+		<b>Why</b> do you need this ?
+		</span>
+		<span class="project_desc_sub_body">
+		<bit>Social networks are always important.Social Network is an efficient tool to keep in contact
+		with several people at the same time.Social Networks,ofcourse provides great entertainment.</bit>
+		</span><br/>
+		<span class="project_desc_sub_head">
+		<b>What</b> we did
+		</span>
+		<span class="project_desc_sub_body">
+		<bit>Social Networking plus plus (SNPP) provides many major services of a social networking
+		websits along with life defining features that are unique to SNPP service.</bit>
+		<bit>This main intent of this project is to enhance the social networking experience.
+		We have used the following services to do that.</bit>
+		<bit style="text-indent: 60px;color: #DA7527">User profiles</bit>
+		<bit style="text-indent: 90px">Show people who you are.</bit>
+		<bit style="text-indent: 60px;color: #DA7527">Hangouts</bit>
+		<bit style="text-indent: 90px">Place where people meet.</bit>
+		<bit style="text-indent: 60px;color: #DA7527">Trick Sharing Application</bit>
+		<bit style="text-indent: 90px">Share your knowledge with your friends.</bit>
+		<bit style="text-indent: 60px;color: #DA7527">Wish Sharing Application</bit>
+		<bit style="text-indent: 90px">Make a wish.</bit>
+		<bit style="text-indent: 60px;color: #DA7527">Photo Albums</bit>
+		<bit style="text-indent: 90px">Share your moments with your friends.</bit>
+		<bit style="text-indent: 60px;color: #DA7527">Online Diary Application</bit>
+		<bit style="text-indent: 90px">Describe your life.</bit>
+		<bit style="text-indent: 60px;color: #DA7527">Fame Meter Application</bit>
+		<bit style="text-indent: 90px">Let people know how famous you are.</bit>
+		<bit style="text-indent: 60px;color: #DA7527">Display Picture Assignment Application</bit>
+		<bit style="text-indent: 90px">Lets your friends assign a picture to you.</bit>
+		<bit style="text-indent: 60px;color: #DA7527">Connections</bit>
+		<bit style="text-indent: 90px">Form connections in all new way.</bit>
+		<bit style="text-indent: 60px;color: #DA7527">Interactive Help.</bit>
+		</span>
+	      </div>
+	    </p>
+	    <br/>
+	    <!-- project desc end -->
+	     
+	  <span class="project_desc_head">Tools and Technologies Used</span>
+	    <p>
+	      <span class="project_desc_body">
+		<?php echo $projectTools;?>
+	      </span>
+	    </p><br/>
+	      
       </div>
-    <a href="#home" id="download_repository" class="btn_blue btn">
-      Download Source Code from Github
-    </a>
+      <?php if($projectURL!=""){ ?>
+	<a href="<?php echo $projectURL; ?>" id="download_repository" class="btn_blue btn">
+	    Download Repository from Github
+	</a>
+      <?php } ?>
 </div>
 
 <div id="project_media" class="section">
@@ -281,12 +383,9 @@ border: 1px solid rgba(32, 30, 30, 0.45);
 
 <div id="project_credits" class="section">
      <div class="section_title">Project Credits</div>
-      <div style="margin: 30px;">
-	  <?php echo $projectDesc;?>
-      </div>
-    <a href="#home" id="download_repository" class="btn_blue btn">
-      Download Repository from Github
-    </a>
+	<div style="margin: 30px;">
+	    <?php echo $projectCredits;?>  
+	</div>
 </div>
 
   <?php include("includes/footer.php"); ?>

@@ -2,7 +2,8 @@
 		 <div id="what_i_love" class="section">
 		    <div class="section_title">What I Love</div>
 			<div class="content_i_love">
-			    I have passion for innovation.
+			    I have passion for innovation.<br/>
+			    I love creating beautiful things.
 			</div>
 			<div class="images_i_love">
 			    <i class="icon-laptop" style="font-size: 200px;text-align: center"></i><br/>
